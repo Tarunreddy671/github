@@ -1,6 +1,8 @@
 # Pizza Bot
 
-A basic chatbot built using [Dialogflow](https://dialogflow.com/), [NodeJS](https://nodejs.org/) and [Angular](https://angular.io/)
+A basic chatbot built using [Dialogflow](https://dialogflow.com/), [NodeJS](https://nodejs.org/) and [Angular](https://angular.io/). The deployed app can be checked out here: https://pizza-bot-lqrjjy.firebaseapp.com/
+
+You can order a pizza or check out the status of an order.
 
 ## Getting Started
 
