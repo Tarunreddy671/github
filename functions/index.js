@@ -22,3 +22,4 @@ exports.dialogflowGateway = functions.https.onRequest((request, response) => {
         response.send(result);
     });
 });
+
