@@ -1,27 +1,55 @@
-# PizzaBot
+# Pizza Bot
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.3.
+A basic chatbot built using [Dialogflow](https://dialogflow.com/), [NodeJS](https://nodejs.org/) and [Angular](https://angular.io/)
 
-## Development server
+## Getting Started
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+If you want to check it out on your local machine follow the instructions below:
 
-## Code scaffolding
+### Prerequisites
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+For getting started you need Angular and Firebase Tools, to install Angular you can follow the instructions [here](https://angular.io/guide/setup-local). Firebase tools can be installing using the npm package, instructions for which can be found [here](https://firebase.google.com/docs/cli).
 
-## Build
+You will also need a [firebase project](https://firebase.google.com/docs/projects/learn-more) to host this and a firestore to store order information. My collection is named 'pizza.orders', you should then download the Service Account SDK json file (can be downloaded from Firebase Project Settings -> Service accounts.) and copy it to the functions directory inside pizza-bot. The file is then referenced at 
+```console
+line 6: const serviceAccount = require('./service-account.json');
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+The databaseURL at line 10 should be changed as per your project name. 
+```console
+line 10: databaseURL: 'https://pizza-bot-lqrjjy.firebaseio.com'
+```
 
-## Running unit tests
+You should also change the projectId with yours at 
+```console
+line 20: const session = sessionClient.sessionPath('pizza-bot-lqrjjy', sessionId);
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Firebase function URL has been referenced inside chat.component.ts at
+```console
+line 4: const dialogflowURL = 'https://us-central1-pizza-bot-lqrjjy.cloudfunctions.net/dialogflowGateway';
+```
 
-## Running end-to-end tests
+### Installation
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Clone the repository on your local machine and execute the following from the root directory of the project
+```console
+pizza-bot:~$ npm install
+```
 
-## Further help
+## Running Locally
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Run the application on localhost using
+```
+ng serve --o
+```
+
+### Setting up Firebase
+Go to [Firebase](https://firebase.google.com/) and create a free account, you can then setup Firebase for deploying an Angular App by referring to this [this article](https://angularfirebase.com/lessons/deploying-an-angular-app-to-firebase/). Basically you have to do the following steps:
+```
+ng build --prod
+firebase login
+firebase init
+firebase deploy
+```
+If successful you will be able to see your deployed app using the URL displayed in the CLI.
