@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-const dialogflowURL = '';
+const dialogflowURL = 'https://us-central1-pizza-bot-lqrjjy.cloudfunctions.net/dialogflowGateway';
 
 @Component({
   selector: 'app-chat',
@@ -18,7 +18,7 @@ export class ChatComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.displayBotMessage('Human presence detected 🤖. How can I help you? ');
+    this.displayBotMessage('Welcome to Yo Yo Pizza. You can either place an ORDER or know the STATUS of your order. :)');
   }
 
   handleUserMessage(event) {
@@ -50,7 +50,6 @@ export class ChatComponent implements OnInit {
     this.messages.push({
       text,
       sender: 'You',
-      avatar: '/assets/user.png',
       reply: true,
       date: new Date()
     });
